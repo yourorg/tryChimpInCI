@@ -1,0 +1,17 @@
+machine:
+  environment:
+    METEOR_CMD: ${HOME}/.meteor/meteor
+  node:
+    version: 4.4.7
+
+dependencies:
+  cache_directories:
+    - ~/.meteor
+    - ~/nvm/versions/node/v4.4.7/bin
+    - ~/nvm/versions/node/v4.4.7/lib/node_modules
+    - "~/.npm"
+
+  pre:
+    - mkdir -p ~/.meteor
+    - if [ ! -e ${METEOR_CMD} ]; then curl https://install.meteor.com | /bin/sh 2>&1 | cat; fi
+    - npm install    --no-spin
