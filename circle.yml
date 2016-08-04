@@ -1,6 +1,7 @@
 machine:
   environment:
     METEOR_CMD: ${HOME}/.meteor/meteor
+    CHIMP_PATH: ${HOME}/nvm/versions/node/v4.4.7/lib/node_modules/chimp
   node:
     version: 4.4.7
 
@@ -14,8 +15,7 @@ dependencies:
   pre:
     - mkdir -p ~/.meteor
     - if [ ! -e ${METEOR_CMD} ]; then curl https://install.meteor.com | /bin/sh 2>&1 | cat; fi
-    - npm install -g chimp  --np-progress
-
+    - if [ ! -d ${CHIMP_PATH} ]; then npm install -g chimp --no-progress;  fi
     - ${METEOR_CMD}:
         background: true
 
