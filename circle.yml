@@ -14,12 +14,12 @@ dependencies:
   pre:
     - mkdir -p ~/.meteor
     - if [ ! -e ${METEOR_CMD} ]; then curl https://install.meteor.com | /bin/sh 2>&1 | cat; fi
-    - npm install -g chimp
+    - npm install -g chimp  --np-progress
 
     - ${METEOR_CMD}:
         background: true
 
 test:
   override:
-    - chimp  --browser=phantomjs .e2e_tests/chimp-config.js --debug --ddp=http://localhost:3000 --path=.e2e_tests
+    - chimp .e2e_tests/chimp-config.js --browser=phantomjs --ddp=http://localhost:3000 --path=.e2e_tests
 
